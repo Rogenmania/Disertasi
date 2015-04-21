@@ -1,0 +1,68 @@
+\documentclass{dissertation}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf} %converting eps to pdf
+\usepackage{subfigmat} %for figure in matrices
+\usepackage{subfigure}
+\usepackage{varioref} %
+ \usepackage{enumitem}
+\usepackage{threeparttable}
+\usepackage[dvips]{dropping}
+\usepackage{tcolorbox} % put text in a box
+\newcommand{\TheDir}{}
+\makeglossary
+\newtheorem{Lemma}{Lemma}
+\begin{document}
+\epstopdfsetup{update}
+%% Specify the title and author of the thesis. This information will be used onabab
+%% the title page (in title/title.tex) and in the metadata of the final PDF.
+%\title[Optional Subtitle]{Title}
+%\author{Albert}{Einstein}
+
+%% Use Roman numerals for the page numbers of the title pages and table of
+%% contents.
+%\frontmatter
+
+%\include{title/title}
+
+%% The (optional) dedication can be used to thank someone or display a
+%% significant quotation.
+%\dedication{\epigraph{Science is a wonderful thing \\ if one does not have to earn one's living at it.}{Albert Einstein}}
+
+%\include{preface/preface}
+
+%\tableofcontents
+
+%% Use Arabic numerals for the page numbers of the chapters.
+%\mainmatter
+
+%% Turn on thumb indices.
+\thumbtrue
+
+
+\renewcommand{\TheDir}{chapters/01-Introduction/}
+\input{\TheDir Introduction}
+
+%\renewcommand{\TheDir}{chapters/02-Architecture/}
+%\input{\TheDir Architecture}
+
+%\renewcommand{\TheDir}{chapters/04-VOinCooperativeLayer/}
+%\input{\TheDir SVOforCooperative}
+
+%% Use letters for the chapter numbers of the appendices.
+\appendix
+
+%\include{appendix-a/appendix-a}
+
+%% Turn off thumb indices for unnumbered chapters.
+\thumbfalse
+%\backmatter
+\bibliography{MyBIB}
+\bibliographystyle{dissertation}
+%\include{summary/summary}
+%\include{cv/cv}
+%\include{publications/publications}
+
+
+
+\end{document}
+

@@ -1,0 +1,360 @@
+\chapter{Conclusions AND Recommendations}
+\label{Ch:conclusion}
+%%%%
+
+%% main text
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%A conceptual and generic model-based fault-tolerant flight control (FTFC) system is defined in this thesis as follow:\\
+%
+%\leftline{\textbf{Definition. 2. Model-based \ac{FTFC} system:}}
+%\textit{An advanced model-based flight control system which can obtain the failure knowledge through a fault detection \& isolation unit, improve the situation awareness of an pilot or an internal controller by indicating the current safe flight envelope, and can accomplish the demanded flight task after accommodating the ongoing fault scenarios using a non-conventional reconfigurable flight control law.} $\square$
+%
+%By definition, an aerodynamic model plays an essential role in designing and applying a \ac{FTFC} system. An accurate aerodynamic model is required by at least one of the following components: \ac{FDI}, Reconfigurable Control Laws, and Flight Envelope Protection, see \figref{f:chapterdiagram}.
+
+The goal of the research discussed in this thesis was twofold. First, to develop new powerful, cost-saving and computationally effective time-domain methods for identifying global models of nonlinear systems such as aircraft systems. Second, to extend acceleration measurements-based incremental control approaches to deal with structural or actuator failures occurring in an aircraft. The first was mainly developed for designing a model-based adaptive flight controller and for developing a model-based offline or online flight envelope protection approach. The second aimed at providing an alternative nonlinear reconfigurable control approach to fault-tolerant flight control. This goal is reflected by the main research question of this thesis:\\
+
+%AMINC=acceleration measurement-based incremental nonlinear control
+%\begin{center}
+%\begin{minipage}[t]{0.85\textwidth}
+%\textbf{What time-domain global model identification methods and acceleration measurement-based incremental nonlinear flight control laws are suited for designing an advanced model-based fault-tolerant flight control system for increasing the survivability of an aircraft?}
+%\end{minipage}
+%\end{center}
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\vspace{-0.5cm}
+\begin{shaded}
+\noindent  {\color{white} Main research question}
+\end{shaded}
+\vspace{-0.8cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} How can an advanced fault-tolerant flight control system be designed to increase the survivability of an aircraft.}
+\end{shaded}
+\vspace{-0.2cm}
+
+
+%Work Summary
+Three new global model identification methods and two acceleration measurements-based incremental nonlinear flight control laws were developed to answer the above research question.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Overview of the Work on Model Identification}
+\label{sec:01concl}
+
+Among those three global model identification algorithms developed in Part One of this thesis, two of them use multivariate simplex B-splines (\ac{MVSB}) and the third one was developed by combining a recursive kernel method with a support vector machine scheme.
+To enhance the computational efficiency of the parametric model identification methods using multivariate simplex B-spline polynomials, two recursive linear regression schemes were developed yielding two improved recursive linear-regression model identification methods using \ac{MVSB}. These two methods were validated using simulated flight test data generated with a high-fidelity nonlinear model of an F-16 aircraft.
+A novel recursive and parametric kernel method was developed for aerodynamic model identification. This focus of this work was to enhance the approximation power of a recursive and parametric kernel method by determining an optimal set of kernels for the kernel scheme. The adaptive kernel method was validated using a series of public available benchmark data sets well known to researchers from the field of pattern recognition \cite{ypzhao12,ypzhao09}.
+
+%\note{In the above paragraph, the good properties of the \ac{MVSB} method should be mentioned. Also, the good property of the adaptive kernel method should be clarified.}
+
+The global model identification methods function as follows. Firstly, a nominal aerodynamic model has to be trained \textit{in advance} using pre-collected flight test data or wind-tunnel data. Then, the nominal model can be applied in a real-time situation, where the global model is allowed to be updated locally using flight test data for the current flight conditions. These global model identification methods then allow the estimated models to be stored for later re-use in a model-based adaptive flight controller for cases where the same flight conditions are revisited.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Overview of Acceleration Measurements-Based Incremental Control}
+\label{sec:02concl}
+
+A novel type of acceleration measurements-based incremental flight control laws was investigated and reported in Part Two of this thesis. The research aimed at providing a \ac{FTFC} system with a powerful non-conventional flight control approach which could accommodate sudden structural or actuator failures occurring in an aircraft. In this part, a \textit{sensor-based backstepping} approach is extended to handle sudden model changes in an aircraft caused by structural or actuator failures. A hybrid two-loop attitude controller and a joint two-loop angular controller were designed for the RECOVER model, the rate controller was designed using an acceleration measurements-based incremental controller. Both the hybrid two-loop angular controller and the joint two-loop angular controller were validated using the RECOVER model with a focus on dealing with two benchmark fault scenarios: namely a rudder runaway case and a flight 1862 engine separation scenario. 
+
+A global model identification method using tensor-product \ac{MVSB} was developed. This new modeling method provides a user with more flexibility with respect to model structure selection and can enhance the clarity of a physical interpretation of the estimated model. Depending on a priori knowledge of a plant under estimation, the multivariate B-spline model can be chosen to have a different model structure, where a certain dimension of the spline function is treated differently from other dimensions. The tensor-product multivariate simplex B-splines method was applied to fit a nonlinear global model for a F-16 aircraft using simulated flight data generated using a high-fidelity nonlinear F-16 model. The control derivatives were derived from the tensor-product multivariate simplex B-spline model to provide a control effectiveness matrix for an incremental flight controller. How the estimation accuracy of the control effectiveness matrix, which is identified using the tensor-product simplex B-splines method, affects the performance of an incremental flight controller was investigated.
+
+
+
+%Transition and split the main question
+
+In the following, the conclusions obtained throughout the different chapters are synthesized and presented. A general conclusion is given in \secref{sec:05concl}. Finally, in \secref{sec:06concl}, some recommendations for future research are presented.
+
+%Clarify the research scope of the work in this thesis
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Recursive Global Model Identification Methods}
+\label{sec:03concl}
+
+A global aerodynamic model is needed by a model-based fault-tolerant fight control (\ac{FTFC}) system.
+Reconfigurable flight control methods based on a model-based adaptive control law have attracted a large amount of interest from the aerospace community over the past few decades because this type of methods extracts the most of the potential of the aircraft at current operating condition and can therefore enhance the aircraft's survivability in the case of failure. A full-envelope modular reconfigurable flight controller requires a global aerodynamic model which is valid in the entire flight envelope of an aircraft.
+At the meantime, the significance of flight envelope protection \ac{FEP} has caught wide attention from engineers in the field of guidance navigation and control. One preferred branch of the \ac{FEP} methods is the global aerodynamic model based offline or online \ac{FEP} method. Central to the model-based \ac{FEP} method is again an accurate global aerodynamic model. Once the aircraft states are given, an aerodynamic model identification problem is reduced into a system identification problem which can be solved using an \textit{equation-error} approach. The \textit{equation-error} approach is commonly based on a function approximation algorithm. A parametric function approximation scheme namely multivariate simplex B-splines \ac{MVSB} and an adaptive kernel method are the potential candidates which can be well suited for the above-mentioned purpose. However, these two methods need to be improved either in computational efficiency or in approximation accuracy.
+The first subquestion related to the main research question was therefore:\\
+%\begin{center}
+%\begin{minipage}[t]{0.85\textwidth}
+%\textbf{The First Subquestion:}\\
+%\textbf{How can the candidate function approximation methods, i.e. \ac{MVSB} and kernel methods, be improved in terms of approximation accuracy and computational efficiency, to meet the need of model-based adaptive control and \ac{OFEP}?}
+%\end{minipage}
+%\end{center}
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\vspace{-0.5cm}
+\begin{shaded}
+\noindent  {\color{white} The First Subquestion:}
+\end{shaded}
+\vspace{-0.8718033cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} How can the candidate function approximation methods, i.e., \textbf{MVSB} and kernel methods, be improved in terms of their approximation accuracy and computational efficiency, to meet the needs of model-based adaptive control and online flight envelope protection \textbf{OFEP}?}
+\end{shaded}
+
+To answer the first subquestion related to the main research question, the following were developed:\\
+\vspace{-0.4cm}
+\begin{enumerate}
+\item[1.] A substitution based solver was developed for solving an equality-constrained problem as in identifying a linear regression model using simplex B-splines (Chapter 3, Paper \cite{liguoeurognc13,hjtol14j}). 
+\item[2.] A recursive sequential routine was developed for updating a global linear regression model when using multivariate simplex B-splines (Chapter 4, Paper \cite{lgsunjRS2013}).
+\item[3.] A novel tensor-product (TP) multivariate simplex B-spline model structure was extended into a multidimensional case, and a detailed analysis of the properties of this model structure is given in Chapter 8 (Paper \cite{liguosun2014c}).
+\item[4.] A novel recursive parametric kernel method was developed by combining a regular recursive parametric kernel method with an improved recursive reduced least squares support vector regression (IRR-LSSVR) (Chapter 5, Paper \cite{sunlg13neuroj}).
+\end{enumerate}
+
+%These 3 methods will be reiterated and concluded briefly, each of them takes about 1 paragraph
+%To identify a linear regression model using simplex B-splines in real time, the computational efficiency of a solver which is on charge of updating the spline model needs to be enhanced. 
+The linear regression model based on Bernstein basis polynomials was essential to all further applications of an aircraft model, for example model-based adaptive flight control and model-based flight envelope protection. However, the computational efficiency of existing parameter estimation techniques for deriving a multivariate simplex B-spline model still needs to be enhanced to enable the method to be applied in real-time. The two solutions to this end, proposed in this thesis, are summarized and concluded below.\\
+
+%Chapter 3
+\noindent \textbf{Overview of Chapter 3}  A substitution-based solver was developed for a linear regression modeling method using \ac{MVSB}. The substitution solver was based on a singular value decomposition of the constraint matrix and a transformation using the vectors contained by the kernel space of the equality constraint matrix. The original equality constrained linear regression model identification problem was converted into a constraint-free linear regression modeling problem which could be solved using an ordinary least squares or recursive least squares identifier.\\
+
+\noindent \textbf{Conclusions of Chapter 3} The substitution-based mathematical transformation reduced the size of the original linear regression problem in the sense that the scale of the parameter covariance matrix was reduced, this resulted in an effective linear regression model updating algorithm when using \ac{MVSB}. The computational complexity of the substitution based (SB) \ac{MVSB} approach was given after an analysis of the complexity of the algorithm from the mathematical perspective. An equality constrained recursive least squares \ac{MVSB} (ECRLS-\ac{MVSB}) has a computational complexity of $\mathcal{O}\left(3m^2\right)$, and the SB-\ac{MVSB} method has a computational complexity of $\mathcal{O}\left\{\left(m-r\right)\cdot\left(4m-3r\right)\right\}$ with $m$ and $r$ the total number of B-coefficients and the smoothness order, respectively. The analysis proved that the computational complexity of the SB-MVSB approach was much lower than that of an ECRLS-\ac{MVSB} method, and the gap between these two methods was even larger when the rank of the constraint matrix was high. Thereafter, the SB-MVSB method was validated using simulated flight test data generated using a high-fidelity nonlinear F-16 model, and was compared with a model identification method using ordinary polynomial basis. These two methods were applied to model the nondimensional force and moment coefficients of an F-16 aircraft. The comparison of results showed that the SB-MVSB method led to higher approximation accuracy than the ordinary polynomial based method.
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\vspace{-0.2cm}
+\begin{shaded}
+\noindent {\color{white} Main findings of Chapter 3:}
+\end{shaded}
+\vspace{-0.8cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} A substitution based solver developed using a singular value decomposition can reduce the computational load of a recursive function approximation algorithm which uses a linear regression form of the \textbf{MVSB} model.}
+\end{shaded}
+
+%Chapter 4
+\noindent \textbf{Overview of Chapter 4} A recursive sequential scheme was developed for deriving and updating a linear regression model when using \ac{MVSB}. The aim was to enhance the computational efficiency of the recursive \ac{MVSB} method by transforming a global model identification problem at each time step into a per-simplex local-model-updating problem. This recursive model identification method is denoted as a recursive sequential (RS) \ac{MVSB} approach in this thesis. In this method, the updating routine of the linear regression model consists of two consecutive steps. In step one of this approach, a per-simplex local model only is updated instead of updating the entire global model define on all the simplices. The high computational load resulted from the requirement to update the global covariance matrix is avoided. In step two, to allow for a smooth transition between different per-simplex local models, a \textit{linear minimum mean square errors} (LMMSE) estimation, i.e., a linear projection with an optimality criterion, of the global B-coefficient vector is performed.\\
+
+\noindent \textbf{Conclusions of Chapter 4}  The new recursive model identification method, i.e., RS-MVSB, was proven to be able to comply with the equality constraints resulting from the requirements on a smooth transition between different simplices. The computational complexity over time of the RS-MVSB and ECRLS-MVSB was given following an analysis from a mathematical operation prospective. The ECRLS-\ac{MVSB} method has a computational complexity of $\mathcal{O}\left(3m^2\right)$ and the RS-\ac{MVSB} method has a computational complexity of $\mathcal{O}\left( 3 \frac{m^2}{k^2}\right)$ with $k$ the number of local models. The analytical results showed that the RS-\ac{MVSB} was more computationally economic than the ECRLS-\ac{MVSB} method. 
+Two series of simulation experiments were performed.
+Firstly, the RS-MVSB method was validated using a 2-dimension data set and a 3-dimension data set designed artificially with white noise, and the method was compared with the ECRLS-MVSB method. Simulation results showed that RS-MVSB approach resulted in a much lower computational load than ECRLS-\ac{MVSB} without evidently sacrificing its approximation power. As shown in the results for a 3-D demonstration example where the B-coefficient number was $2808$, the RS-\ac{MVSB} method was $60$-$70$ times faster than the ECRLS-\ac{MVSB} method when the codes were programmed in the Matlab running as interpreted scripts and run on a quad core PC (Intel Xeon E3-1270@3.40 GHZ, RAM 16.0 GB).
+Secondly, to demonstrate the high approximation power of the RS-MVSB method during aerodynamic model identification, the method was validated using a simulated flight test data generated using a high-fidelity nonlinear F-16 model, and it was compared with ECRLS-MVSB and a modeling method using an ordinary polynomial basis (OPB). The model structure selection of \ac{MVSB} was also investigated with a focus on how the polynomial order and smoothness order affected the approximation power of the \ac{MVSB} method. The simulation results showed that the new recursive global model identification method, i.e., RS-MVSB, led to a more accurate aerodynamic model than the ordinary polynomial based method and it yielded an accuracy comparative to that of ECRLS-MVSB as long as that the smoothness order was not chosen to be relatively high, e.g., larger than 2.
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\begin{shaded}
+\noindent {\color{white} Main findings of Chapter 4:}
+\end{shaded}
+\vspace{-0.95cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} An \textbf{RS-MVSB} method can reduce a computational load during model identification by only executing local updating of a local per-simplex model.}
+\end{shaded}
+
+
+%Chapter 8 TP-MVSB
+\noindent \textbf{Overview of the algorithm part of Chapter 8} To provide more options for model structure selection when using \ac{MVSB}, a novel tensor-product (TP) multivariate simplex B-spline (\ac{MVSB}) model structure was studied. The \ac{TP-MVSB} global model identification approach was extended from a single-dimension case into a multi-dimension case, and the properties of this new model structure were analyzed in detail.
+In a standard \ac{MVSB} model, each dimension of inputs is treated identically where there is no chance to set different polynomial orders for different inputs. However, for some systems, a sufficiently accurate model can be achieved by choosing low polynomial orders for the spline polynomials in a certain dimension. For example, indicated in the \textit{a priori} knowledge, a model under study might be affine in certain inputs.
+In the \ac{TP-MVSB} approach, an input dimension, which is less correlated with other dimensions and does not require a polynomial order that is as high as other dimensions, can be treated differently from all the other inputs. The calculation procedure of the entire basis regression vector involving all inputs consists of two steps. First, a univariate spline basis vector is constructed for this chosen input, and a basis regression vector for the other remaining inputs is constructed using standard \ac{MVSB}. Then, the entire basis regression vector is constructed by synthesizing those two basis vectors mentioned above using a tensor product operator. The \ac{TP-MVSB} modeling structure was extended, i.e., generalized, to allow for dealing with the case where two or more dimensions are chosen to be treated specifically. In addition, the generic expression was given for calculating the partial derivatives with regard to any dimension of input.\\
+
+\noindent \textbf{Conclusions of the algorithm part of Chapter 8} Using a standard \ac{MVSB} approach yields high-order basis polynomials, which may not be expected for certain inputs, during the construction of the basis regression vector. In contrast, these high-order basis polynomials can be set to be excluded by the basis regression vector when using a TP-MVSB approach. Compared to the standard \ac{MVSB}, the \ac{TP-MVSB} approach can reduce the scale of the \ac{MVSB} model without sacrificing the approximation accuracy. As shown in one of the demonstration examples where the nondimensional pitch moment coefficient was estimated, the \ac{TP-MVSB} approach required one third less B-coefficients than that needed by a standard \ac{MVSB} method, but yielded a higher approximation accuracy.
+The \ac{TP-MVSB} approach was applied to simulated flight test data sets generated using a high-fidelity nonlinear F-16 model. The simulation results showed that \ac{TP-MVSB} can achieve a comparative approximation accuracy to that of standard \ac{MVSB} when estimating the nondimensional moment coefficients of the F-16 aircraft.
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\begin{shaded}
+\noindent {\color{white} Main findings of part one in Chapter 8:}
+\end{shaded}
+\vspace{-0.95cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} The \textbf{TP-MVSB} modeling structure can treat different input dimensions differently, and it helps to reduce computational load by removing some unnecessary basis polynomials from the regression vector according to the \textit{a priori} knowledge.}
+\end{shaded}
+
+%Chapter 5
+%The high approximation power of kernel methods, together with their independence of fixed underlying geometric structure, makes them a potentially desirable alternative for parametric modelling methods.
+A consensus exists that kernel methods such as RBF neural networks have a high approximation power. Considering this merit of the kernel methods, they were investigated in this thesis to perform aerodynamic model identification. Parametric type of kernel methods which uses a fixed number of kernels exists. One main challenge of using a parametric type recursive kernel method is how to determine an optimal subset of kernels in terms of kernel number, center position and bandwidth. This issue commonly has to be addressed by solving a global optimization problem, which is usually computationally time consuming.\\
+%'\textit{As a response to the first subquestion in the main research question, the following development was made:}\\
+
+\noindent \textbf{Overview of Chapter 5}  Two recursive model identification methods using kernels namely WV-LSSVR and GPK-LSSVR were proposed by combining a recursive parametric kernel method with an offline support vector machine namely improved \ac{RR-LSSVR} (\ac{IRR-LSSVR}). The \ac{IRR-LSSVR} method, an offline model identification method, has been proven to be capable of choosing a lower number of more optimal support vectors than many other existing well-known support vector machines without sacrificing approximation accuracy. Therefore, \ac{IRR-LSSVR} was applied in this work to determine number of kernels, center positions and bandwidths for the new recursive kernel methods, i.e., WV-LSSVR and GPK-LSSVR. This kernel determination process was done through an offline analysis of pre-collected modeling data sets. During a real-time application of the recursive kernel method, the linear regression model defined among the kernel space is updated using ordinary recursive least squares.  The WV-LSSVR method uses ordinary Gaussian kernels, and GPK-LSSVR uses \textit{Gaussian process kernels} which introduce a linear and a constant term in addition to an ordinary Gaussian kernel to enhance the local approximation power of the overall kernel method. \\
+
+\noindent \textbf{Conclusions of Chapter 5} During the determination of the support vectors from pre-collected data sets, the GPK-LSSVR and WV-LSSVR methods yielded the same computational complexity as the IRR-LSSVR method. During the recursive identification phase, the GPK-LSSVR method leads to a higher computational load than WV-LSSVR because the number of unknown parameters in the former is two times larger than that of the latter. The WV-LSSVR and GPK-LSSVR methods were validated using a set of 16 benchmark data sets, and they were compared with $k-means \, \, clustering$ radial basis function method (KMC-RBF) with a focus on approximation accuracy and computational efficiency. The comparison results showed that the GPK-LSSVR, WV-LSSVR and IRR-LSSVR methods always had much higher approximation powers than the KMC-RBF method with the change in the number of support vectors. Compared to WV-LSSVR, the GPK-LSSVR method leads to a slightly higher approximation power at the price of higher computational costs.
+Considering computational efficiency, although the GPK-LSSVR method takes into account different data trends among different subdomains using an extended kernel, the GPK-LSSVR method is not always to be preferred. The choice between the WV-LSSVR and GPK-LSSVR methods should be performed based on the characteristics of the model, i.e., the nonlinearity level of the system.
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\begin{shaded}
+\noindent {\color{white} Main findings of Chapter 5:}
+\end{shaded}
+\vspace{-1.0cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} The \textbf{IRR-LSSVR} is an efficient algorithm that is capable of providing optimal kernel parameters for an ordinary recursive parametric kernel method, and local kernel extension helps to capture the local dynamics of a model.}
+\end{shaded}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%PART II%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Acceleration Measurements-Based Reconfigurable Control}
+\label{sec:04concl}
+Model-based adaptive flight control has advantages, for example the useful system dynamics which contribute to the system stability can be selected not to be counteracted when designing a controller. However, an online model derived for an adaptive controller might not be sufficiently accurate during high maneuvering flight or structural aircraft failure \cite{lombaert2010}, which will make the control performance of the flight controller deteriorate or even make the controller unstable. As an alternative, acceleration measurements-based flight control law, which does not require real-time full aerodynamic model information, and is therefore easier to certify, was investigated for the research reported in this thesis.
+The second subquestion related to the main research question was:\\
+%\begin{center}
+%\begin{minipage}[t]{0.85\textwidth}
+%\textbf{The Second Subquestion:}\\
+%\textbf{What are the benefits of using an acceleration measurements-based control approach, i.e. the sensor based backstepping, as an alternative to a model-based adaptive control approach, when designing a reconfigurable flight controller to deal with aircraft failures in a generic \ac{FTFC} system?}
+%\end{minipage}
+%\end{center}
+
+\vspace{-0.5cm}
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\begin{shaded}
+\noindent  {\color{white}The Second Subquestion:}
+\end{shaded}
+\vspace{-0.98cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} What are the benefits of using an acceleration measurements-based control approach, i.e., the sensor-based backstepping, as an alternative to a model-based adaptive control approach, when designing a reconfigurable flight controller to deal with aircraft failures in a generic \textbf{FTFC} system?}
+\end{shaded}
+
+In order to answer the second subquestion related to the main research question, the following were developed.\\
+\begin{enumerate}
+\item[1.] A hybrid two-loop attitude (angular) controller was designed with the angular rate controller designed using sensor-based backstepping (Chapter 6, Paper \cite{lgsunhyb2013}). 
+\item[2.] A joint two-loop angular controller was designed with the angular rate controller designed using sensor-based backstepping control law (Chapter 7, Papers \cite{sunlgjointSBB13c,lgsunjJSBB2013}).
+\item[3.] The tensor-product multivariate simplex B-spline model structure was employed to calculate the control derivatives to provide control effectiveness matrix for acceleration measurements-based incremental body angular rate controller (Chapter 8, Paper \cite{liguosun2014c}).
+\end{enumerate}
+
+An incremental type control approach, namely approximate dynamic inversion based on singular perturbation theory and Tikhonov's theorem, has been developed by Hovakimyan et al. \cite{naira2007} for a non-affine in control nonlinear system. The stability of the closed-loop system, the controller of which is designed based on a Lyapunov stability function, has been proved under realistic assumptions. In 2011, Falkena et al. \cite{wouter2011} reformulated this \textit{incremental} control approach to allow for direct utilization of the measurements of angular accelerometers. A two-loop attitude (angular) controller has been designed for a Diamond-42 small fixed wing aircraft using the incremental control law indicated as \textit{sensor based backstepping (\ac{SBB})}. However, this new control approach has not yet been applied to a large civil transportation aircraft for the purpose of fault tolerant control. In the work reported in this thesis, the SBB control approach was extended to deal with benchmark structural failures occurring in a Boeing 747 aircraft.
+Two two-loop angular controllers, namely a hybrid NDI/SBB controller and a joint SBB controller, were developed for the RECOVER model. The two-loop hybrid NDI/SBB controller was developed by combining an NDI based outer controller with an inner controller designed using the SBB control law. The two-loop SBB angular controller is an improved version of the two-loop hybrid NDI/SBB angular controller in the sense that a Lyapunov function based multi-loop controller design technique, i.e., recursive backstepping, was used.
+Both angular controllers were validated within a four-loop autopilot using the RECOVER model. The four-loop autopilot consists of an altitude control loop and a flight path angle control loop designed using proportional-integral-derivative in addition to the aforementioned two-loop angular and body angular rate control loop. \\
+\\
+\noindent \textbf{Overview of Chapter 6} The hybrid controller indicated as hybrid NDI/SBB angular controller consists of two control loops namely an angular loop and a body angular rate loop. The inner body angular rate controller was designed using the singular perturbation theory based sensor based backstepping (\ac{SBB}) control approach, and the outer attitude controller was designed using the \ac{NDI} control law. The commanded control inputs by the outer angular loop were taken as reference commands for the inner angular rate loop.
+In the controller design, the control allocation problem was simplified by bounding a number of the control surfaces into a group. The controller was applied to the RECOVER model of a Boeing 747 aircraft, and evaluated using rudder runaway and EL AL flight 1862 benchmark fault scenarios developed by the GARTEUR FM-AG 16 group. The differential thrust control was introduced to replace the rudder deflection control to counteract the undesirable yawing moment induced by the stuck rudder.\\
+
+\noindent \textbf{Conclusions of Chapter 6} Compared with the classic model-based \ac{ANDI} control approach or model-based adaptive backstepping control law, the hybrid NDI/SBB angular control setup needs less online model information. The numerical simulation results showed that the proposed hybrid NDI/SBB angular controller can preserve the safety of the aircraft even when the aforementioned failures occur, and can ensure a zero tracking error performance for the roll angle and the pitch angle commands as long as the aircraft is still controllable with the remaining valid control surfaces. 
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\begin{shaded}
+\noindent {\color{white} Main findings of Chapter 6:}
+\end{shaded}
+\vspace{-0.9cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} A hybrid NDI/SBB two-loop controller has the capability to accommodate sudden model changes due to the mechanism of incremental approximation control in the body angular rate control loop.}
+\end{shaded}
+
+\noindent \textbf{Overview of Chapter 7} A two-loop joint SBB angular controller was developed for the RECOVER model, the heart of which is a Boeing 747 aircraft model. Unlike the hybrid NDI/SBB angular controller, those two control loops in the joint SBB angular controller were designed cooperatively using a recursive backstepping technique starting from the angular loop.  At each backstepping step, a Lyapunov's stability function was used in designing a controller to stabilize the system.
+Similar to other incremental type nonlinear flight controllers, measurements of the body angular accelerations were required. In the research reported in this thesis, the angular accelerations were numerically calculated from the filtered body angular rates using a differentiator. However, in a real application, the body angular accelerations can be directly obtained from the angular accelerometers instead, which is currently under investigation by many research groups.\\
+
+\noindent \textbf{Conclusions of Chapter 7} The numerical simulation results showed that the double-loop joint SBB angular controller can lead to zero tracking errors as long as the given angular reference commands are within the safe flight envelope. That is, the new joint SBB angular controller was shown to be able to stabilize asymptotically the angular reference tracking system under both benchmark faults under consideration. Compared with the hybrid SBB angular controller, the new joint SBB method leads to better zero-hold performance in controlling sideslip angle when an aircraft is flying in the nominal condition or under the engine separation scenario. Under the rudder runaway fault scenario, the new controller presented in this thesis leads to equivalent control performance of sideslip to that of the hybrid SBB angular controller mentioned above.
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\begin{shaded}
+\noindent {\color{white} Main findings of Chapter 7:}
+\end{shaded}
+\vspace{-0.9cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} A joint SBB two-loop angular controller results in better or at least equivalent control performance compared to a hybrid NDI/SBB controller because a recursive backstepping design strategy based on Lyapunov function is introduced.}
+\end{shaded}
+
+\noindent \textbf{Overview of the control-related part of Chapter 8} How the control effectiveness matrix influences the performance of the acceleration measurements-based incremental flight controller was investigated. The \ac{TP-MVSB} approach presented in Chapter 8 and the immersion and invariance (I\&I) estimator were used to estimate the effectiveness matrix of the F-16 aircraft. Although the I\&I technique initially is not aiming for high accuracy but rather for improving system stability, it was used in this work to provide a reasonable, consistent estimation of a single control effectiveness matrix with a focus on reflecting the variations of the model parameters concerning the requirements for a controller. The control effectiveness matrices identified using both methods were applied to a regular incremental backstepping controller to show how the estimation accuracy of the control derivatives affect the performance of the incremental flight controller.\\
+
+\noindent \textbf{Conclusions of the control-related part of Chapter 8} The \ac{TP-MVSB} method was able to provide a reasonably accurate estimation of a control effectiveness matrix for a nonlinear incremental backstepping controller. In comparison, \ac{TP-MVSB} leads to a better changing rate estimation than the I\&I estimator when estimating the effectiveness matrix. 
+Simulation results showed that a slight difference on the control effectiveness matrix made no difference to the attitude flight control performance as long as the conducted flight task required moderate rather than high maneuvering. That is, for an aircraft like F-16, the performance of an incremental controller is not susceptible to the estimation accuracy of the control effectiveness matrix.
+
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+%\vspace{-0.3cm}
+\begin{shaded}
+\noindent {\color{white} Main findings of part two in Chapter 8:}
+\end{shaded}
+\vspace{-1.02cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} The \textbf{TP-MVSB} method leads to a reasonably accurate estimation of the control effectiveness matrix, which can meet the need of an incremental backstepping flight controller.}
+\end{shaded}
+%\vspace{-0.5cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Reformulation for the Extended Kalman Filter
+%\noindent \textbf{Overview of Chapter 9} How the aircraft states can be estimated when the aircraft is encountering a non-zero mean time-varying wind, i.e. a turbulence,  was investigated, and some preliminary results were given. The classic formulation of the kinematic equations for an \ac{EKF} was derived under the assumption that the wind speed is time-invariant.
+%To deal with a non-zero mean time-varying wind, the description equations of the kinematic equations were generalized for the application of an EKF by replacing the chosen state variables by new variables defined in a different reference coordinate system. Simulated flight test data generated using the RECOVER model with a \textit{time-invariant} non-zero mean wind were used to validate the correctness of the new formulation for using an EKF.\\
+%
+%\noindent \textbf{Conclusions of of Chapter 9}  Simulation results showed that an EKF using the new kinematic model description can achieve unbiased and reasonable accurate state estimation. However, how the wind dynamics should be modeled in the augmented expression of the kinematic equations still needs to be investigated before the EKF can be really applied to deal with non-zero mean time-varying wind.
+%
+%\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+%\begin{shaded}
+%\noindent {\color{white} Main findings of Chapter 9:}
+%\end{shaded}
+%\vspace{-0.8cm}
+%\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+%\begin{shaded}
+%\noindent {\color{black} The kinematic equations of an aircraft for the application of an extended Kalman filter need to be generalized in order to account for, i.e. estimate , non-zero mean time-varying wind.}
+%\end{shaded}
+
+
+\section{General conclusions}
+\label{sec:05concl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Synthesizing the results obtained and given throughout the individual chapters, the following general conclusions can be drawn.\\
+
+\vspace{-0.4cm}
+\noindent \textbf{Stability issue related to model-based adaptive control:}\\ As is well known, a model-based, i.e., modular, adaptive control approach is hard to certify concerning system stability because most of the modular approaches can only guarantee \textit{input-to-state} stability. The main reason why modular adaptive control laws cannot guarantee closed-loop system stability is that a large amount of modular adaptive control laws suffer from the weakness of the \textit{certainty equivalence} principle.
+To achieve closed-loop stability, the identified model in a modular adaptive control system is required to be sufficiently accurate.
+The recursive identification methods using multivariate simplex B-splines, reported in this thesis, can achieve highly accurate aerodynamic model, and the model outputs are always bounded by the maximum B-coefficient. These properties of the simplex B-splines make the aerodynamic model easier to certify compared to other more complex modeling methods, e.g. radial basis function neural networks.
+
+%\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+%\begin{shaded}
+%\noindent {\color{white} Model-based Adaptive Reconfigurable Control:}
+%\end{shaded}
+%\vspace{-0.8cm}
+%\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+%\begin{shaded}
+%\noindent {\color{black} The multivariate simplex B-spline method can guarantee a bounded output of the function approximator and therefore makes the flight controller easy to certify and enhances the stability of the entire closed-loop system.}
+%\end{shaded}
+
+Both model-based and acceleration measurements-based flight control methods have advantages and drawbacks, the users should select the methods according to the specific situation they are facing, e.g. concerning physical limitations of the onboard computers or the availability of angular accelerometers.
+
+\vspace{0.5cm}
+\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+\begin{shaded}
+\noindent {\color{white} Modular adaptive control \textit{VS} Angular Acceleration Measurements-based Control:}
+\end{shaded}
+\vspace{-0.9cm}
+\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+\begin{shaded}
+\noindent {\color{black} The joint sensor-based backstepping controller based on the singular perturbation theory, presented in Chapter 7, is recommended if the measurements or an accurate estimation of angular acceleration are obtainable, because this incremental type control law has a low computational-load requirement for the onboard computer. A model-based adaptive reconfigurable flight control law becomes the preferred option if the onboard computer has adequate computational power, or, an accurate aerodynamic model is also required for other components in the entire flight control system, e.g., fault detection and diagnosis unit and flight envelope protection unit. Model-based control has the advantage of being able to design a flight controller which maintains useful damping terms in the closed-loop system.}
+\end{shaded}
+
+%\definecolor{shadecolor}{rgb}{0.4,0.4,0.4}
+%\begin{shaded}
+%\noindent {\color{white} Modular adaptive control \textit{VS} Acceleration Measurements-based Control:}
+%\end{shaded}
+%\vspace{-0.8cm}
+%\definecolor{shadecolor}{rgb}{0.6,0.6,0.7}
+%\begin{shaded}
+%\noindent {\color{black} The joint SBB angular/angular rate controller based on the singular perturbation theory is recommended given the measurements or accurate estimation of angular acceleration. The control effectiveness matrix is correlated to the time scale parameter, and the estimation of this matrix should be further investigated.}
+%\end{shaded}
+
+%\section{Beyond the Scope}
+%\label{sec:03concl}
+% 
+%Three global model identification methods, namely SB-MVSB, RS-MVSB and GPK-LSSVR, were validated using the modeling data, but they are neither incorporated into a flight controller nor applied in a real application of a flight envelope protection approach.
+%
+%Fault detection \& isolation (\ac{FDI}) algorithm is not studied in this thesis. When implementing the fault-tolerant flight controller in Chapter 6 and 7, the type of the failures and the time are supposed to be known.
+
+
+
+\section{Recommendations}
+\label{sec:06concl}
+
+The work presented in this thesis gives rise to new questions and research directions, some recommendations for further studies are presented below.
+
+Three global model identification methods, namely SB-MVSB, RS-MVSB and GPK-LSSVR, were validated using modeling data. The development of these three global model identification methods is a good start towards model-based adaptive flight control and flight envelope protection. However, these methods should be incorporated into a model-based adaptive flight control law or an online flight envelope protection scheme to demonstrate further the benefits of using a real-time accurate global aerodynamic model.
+
+The number of simplices in a triangulation increases dramatically with the increase in the pre-determined vertices in each dimension and input dimensions when using a simplex B-spline model identification method. To enhance the computational efficiency, especially when the inputs are of high dimension, efficient optimization algorithms concerning the data coverage for each simplex should be developed aimed at constructing a triangulation with less simplices.
+
+The directional derivatives of a function, e.g., the control derivatives, are hard to estimate accurately or even not possible to estimate accurately under some circumstances. 
+In this thesis, only the output fitting errors are involved (evaluated) in the cost function. In this case, the first order directional derivatives in terms of control surface deflections cannot be guaranteed to track their corresponding actual values closely. However, if we have some $a$ $priori$ knowledge of the directional derivatives, e.g., the upper and lower bounds, these differential constraints can be taken into account during fitting the function outputs to enhance the estimation accuracy of the directional derivatives, see de Visser et al. \cite{deVisser11}.
+
+No fault detection \& isolation (\ac{FDI}) algorithm was studied for the work reported in this thesis. When implementing the fault-tolerant flight controller in Chapters 6 and 7, the assumption was made that the type of failures and its timing were known. Fault detection of structural failures, actuator failures and sensor failures need to be investigated.
+
+How the sensor noise of angular accelerometers affects the control performance of an acceleration measurements-based incremental controller should be further investigated before the sensor based backstepping control approach can be applied in real flight. In addition, the influence of time delays occurring in actuators or engine systems should be further investigated, especially during controller designs for real aircraft. Further research into acceleration measurements based reconfigurable control should include tests on the SIMONA simulator, realistic test-flights with UAVs and possibly the research aircraft of TU Delft.
+
+The sensor-based backstepping (\ac{SBB})  controller should be tested on the SIMONA simulator to get more feedback on its use from experienced pilots. Comments from pilots can be used to help the controller designers to choose better controller gains or time-scale parameters for the \ac{SBB} controller.
+
+Taking into account the estimation of a time-varying wind using a Kalman filter, how the wind dynamics should be described or modeled in the time-derivative equations of the aircraft kinematics should be investigated. For example, a turbulence model such as the NASA Dryden model should be investigated with a focus on its suitability for the aforementioned purpose.
+
+With respect to online flight envelope protection (\ac{OFEP}), constructing an offline global aerodynamic model for each aircraft fault scenario should be investigated. A regular online global model identification method can only update the model locally given a limited number of incoming data points, therefore, the identified aerodynamic model is more likely not valid for the entire flight envelope in a relatively short period after any sudden structural or actuator failures happen. Nevertheless, \ac{OFEP} requires a global-valid aerodynamic model immediately after a failure occurs to an aircraft to estimate the current safe flight envelope. This shortcoming of online global model identification methods could possibly be circumvented by constructing an offline global aerodynamic model for each fault scenario.
+
+To avoid the \textit{curse-of-dimensionality} problem associated with \ac{OFEP} when using a reachability analysis approach, i.e., evolution of the Hamilton-Jacobi PDEs, more efficient mathematical tools such as the \textit{max-plus} method \cite{mceneaney05}, which is \textit{curse-of-dimensionality-free}, should be investigated. 
+
+%Taking into account the estimation of a non-zero mean time-varying wind, how the wind dynamics should be described or modeled in the time-derivative equations of the aircraft kinematics should be investigated. In addition, the extended Kalman filter using the generalized description of the aircraft kinematic equations should be further tested using a non-zero mean time-varying wind which mimics turbulence.
+
+\cleardoublepage

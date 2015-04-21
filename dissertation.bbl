@@ -1,0 +1,153 @@
+%merlin.mbs apsrev4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+%Control: key (0)
+%Control: author (72) initials jnrlst
+%Control: editor formatted (1) identically to author
+%Control: production of article title (0) allowed
+%Control: page (0) single
+%Control: year (1) truncated
+%Control: production of eprint (0) enabled
+\begin{thebibliography}{9}%
+\makeatletter
+\providecommand \@ifxundefined [1]{%
+ \@ifx{#1\undefined}
+}%
+\providecommand \@ifnum [1]{%
+ \ifnum #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \@ifx [1]{%
+ \ifx #1\expandafter \@firstoftwo
+ \else \expandafter \@secondoftwo
+ \fi
+}%
+\providecommand \natexlab [1]{#1}%
+\providecommand \textit  [1]{``#1''}%
+\providecommand \bibnamefont  [1]{#1}%
+\providecommand \bibfnamefont [1]{#1}%
+\providecommand \citenamefont [1]{#1}%
+\providecommand \href@noop [0]{\@secondoftwo}%
+\providecommand \href [0]{\begingroup \@sanitize@url \@href}%
+\providecommand \@href[1]{\@@startlink{#1}\@@href}%
+\providecommand \@@href[1]{\endgroup#1\@@endlink}%
+\providecommand \@sanitize@url [0]{\catcode `\\12\catcode `\$12\catcode
+  `\&12\catcode `\#12\catcode `\^12\catcode `\_12\catcode `\%12\relax}%
+\providecommand \@@startlink[1]{}%
+\providecommand \@@endlink[0]{}%
+\providecommand \url  [0]{\begingroup\@sanitize@url \@url }%
+\providecommand \@url [1]{\endgroup\@href {#1}{\urlprefix }}%
+\providecommand \urlprefix  [0]{URL }%
+\providecommand \Eprint [0]{\href }%
+\providecommand \doibase [0]{http://dx.doi.org/}%
+\providecommand \selectlanguage [0]{\@gobble}%
+\providecommand \bibinfo  [0]{\@secondoftwo}%
+\providecommand \bibfield  [0]{\@secondoftwo}%
+\providecommand \translation [1]{[#1]}%
+\providecommand \BibitemOpen [0]{}%
+\providecommand \bibitemStop [0]{}%
+\providecommand \bibitemNoStop [0]{.\EOS\space}%
+\providecommand \EOS [0]{\spacefactor3000\relax}%
+\providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
+\let\auto@bib@innerbib\@empty
+%</preamble>
+\bibitem [{\citenamefont {DeGarmo}\ and\ \citenamefont
+  {Nelson}(2004)}]{degarmo:04}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~T.}\ \bibnamefont
+  {DeGarmo}}\ and\ \bibinfo {author} {\bibfnamefont {G.~M.}\ \bibnamefont
+  {Nelson}},\ }\bibfield  {title} {\textit {\bibinfo {title} {Prospective
+  unmanned aerial vehicle operations in the future national airspace system},}\
+  }in\ \href {\doibase 10.2514/6.2004-6243} {\emph {\bibinfo {booktitle} {AIAA
+  4th Aviation Technology, Integration, and Operations Forum, ATIO}}}\
+  (\bibinfo  {publisher} {AIAA},\ \bibinfo {year} {2004})\ pp.\ \bibinfo
+  {pages} {172--179},\ \bibinfo {note} {aIAA 2004-6243,
+  doi:10.2514/6.2004-6243}\BibitemShut {NoStop}%
+\bibitem [{CAP()}]{CAP722}%
+  \BibitemOpen
+  \href@noop {} {\emph {\bibinfo {title} {CAP722, Unmanned Aircraft System
+  Operations in UK Airspace – Guidance.}}},\ \bibinfo {organization} {UK
+  Civil Aviation Authority}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Barfield}(2000)}]{barfield:00}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Barfield}},\ }\bibfield  {title} {\textit {\bibinfo {title} {Autonomous
+  collision avoidance. the technical requirements},}\ }in\ \href {\doibase
+  10.1109/NAECON.2000.894998} {\emph {\bibinfo {booktitle} {National Aerospace
+  and Electronics Conference (NAECON)}}}\ (\bibinfo {year} {2000})\ pp.\
+  \bibinfo {pages} {808--813},\ \bibinfo {note}
+  {doi:10.1109/NAECON.2000.894998}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Dalamagkidis}\ \emph {et~al.}(2009)\citenamefont
+  {Dalamagkidis}, \citenamefont {Valavanis},\ and\ \citenamefont
+  {Piegl}}]{Dalamagkidis:09}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {K.}~\bibnamefont
+  {Dalamagkidis}}, \bibinfo {author} {\bibfnamefont {K.~P.}\ \bibnamefont
+  {Valavanis}}, \ and\ \bibinfo {author} {\bibfnamefont {L.~A.}\ \bibnamefont
+  {Piegl}},\ }\bibfield  {title} {\textit {\bibinfo {title} {On integrating
+  unmanned aircraft systems into the national airspace system},}\ }in\ \href
+  {\doibase 10.1007/978-94-007-2479-2} {\emph {\bibinfo {booktitle}
+  {International Series on Intelligent Systems, Control, and Automation:
+  Science and Engineering}}},\ Vol.~\bibinfo {volume} {36}\ (\bibinfo
+  {publisher} {Springer Science+Business Media},\ \bibinfo {year} {2009})\
+  \bibinfo {edition} {1st}\ ed.,\ \bibinfo {note} {doi:
+  10.1007/978-94-007-2479-2}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Kochenderfer}\ \emph {et~al.}(2012)\citenamefont
+  {Kochenderfer}, \citenamefont {Holland},\ and\ \citenamefont
+  {Chryssanthacopoulos}}]{Kochenderfer:12}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {M.~J.}\ \bibnamefont
+  {Kochenderfer}}, \bibinfo {author} {\bibfnamefont {J.~E.}\ \bibnamefont
+  {Holland}}, \ and\ \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont
+  {Chryssanthacopoulos}},\ }\bibfield  {title} {\textit {\bibinfo {title} {Next
+  generation airborne collision avoidance system},}\ }\href {\doibase
+  10.2747/1548-1603.48.1.24} {\bibfield  {journal} {\bibinfo  {journal}
+  {Lincoln Laboratory Journal}\ }\textbf {\bibinfo {volume} {19}},\ \bibinfo
+  {pages} {55} (\bibinfo {year} {2012})},\ \bibinfo {note} {doi:
+  10.2747/1548-1603.48.1.24}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hoekstra}(2001)}]{Hoekstra:01}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~M.}\ \bibnamefont
+  {Hoekstra}},\ }\href@noop {} {\textit {\bibinfo {title} {Designing for
+  safety: the free flight air traffic management concept},}\ } (\bibinfo {year}
+  {2001})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Fasano}\ \emph {et~al.}(2008)\citenamefont {Fasano},
+  \citenamefont {Accardo}, \citenamefont {Moccia}, \citenamefont {Carbone},
+  \citenamefont {Ciniglio}, \citenamefont {Corraro},\ and\ \citenamefont
+  {Luongo}}]{Fasano:08}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Fasano}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Accardo}},
+  \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Moccia}}, \bibinfo
+  {author} {\bibfnamefont {G.}~\bibnamefont {Carbone}}, \bibinfo {author}
+  {\bibfnamefont {U.}~\bibnamefont {Ciniglio}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Corraro}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Luongo}},\ }\bibfield  {title} {\textit
+  {\bibinfo {title} {Multi-sensor-based fully autonomous non-cooperative
+  collision avoidance system for unmanned air vehicles},}\ }\href {\doibase
+  10.2514/1.35145} {\bibfield  {journal} {\bibinfo  {journal} {Journal of
+  Aerospace Computing, Information and Communication}\ }\textbf {\bibinfo
+  {volume} {5}},\ \bibinfo {pages} {338} (\bibinfo {year} {2008})},\ \bibinfo
+  {note} {doi: 10.2514/1.35145}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Hrabar}(2011)}]{Hrabar:11}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~b.}\ \bibnamefont
+  {Hrabar}},\ }\bibfield  {title} {\textit {\bibinfo {title} {Reactive obstacle
+  aavoidance for rotorcraft uavs},}\ }in\ \href {\doibase
+  10.1109/IROS.2011.6094560} {\emph {\bibinfo {booktitle} {IEEE International
+  Conference on Intelligent Robots and Systems}}}\ (\bibinfo {year} {2011})\
+  pp.\ \bibinfo {pages} {4967--4974},\ \bibinfo {note} {doi:
+  10.1109/IROS.2011.6094560}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Moses}\ \emph {et~al.}(2014)\citenamefont {Moses},
+  \citenamefont {Rutherford}, \citenamefont {Kontitsis},\ and\ \citenamefont
+  {Valavanis}}]{Moses:14}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Moses}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Rutherford}},
+  \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Kontitsis}}, \ and\
+  \bibinfo {author} {\bibfnamefont {K.}~\bibnamefont {Valavanis}},\ }\bibfield
+  {title} {\textit {\bibinfo {title} {Uav-borne x-band radar for collision
+  avoidance},}\ }\href {\doibase 10.1017/S0263574713000659} {\bibfield
+  {journal} {\bibinfo  {journal} {Robotica}\ }\textbf {\bibinfo {volume}
+  {32}},\ \bibinfo {pages} {97} (\bibinfo {year} {2014})},\ \bibinfo {note}
+  {doi: 10.1017/S0263574713000659}\BibitemShut {NoStop}%
+\end{thebibliography}%
